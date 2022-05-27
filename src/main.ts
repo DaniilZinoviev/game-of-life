@@ -7,12 +7,17 @@ Any dead cell with exactly three live neighbours becomes a live cell, as if by r
 
 // ;(function(){
 
-window.table = document.getElementById("lifegame");
+// window.table = document.getElementById("lifegame");
 let tickBtn = document.getElementById("tick");
-let width = 10;
-let height = 10;
+let width = 100;
+let height = 100;
 
-class Lifegame {
+
+interface ILifegame {
+  constructor(): void;
+  
+}
+class Lifegame implements ILifegame {
   constructor(options = {}) {
     if (!options.table)
       throw new Error("Lifegame: Requires first argument table!");
@@ -189,7 +194,7 @@ class Lifegame {
   }
 }
 
-window.lifegame = new Lifegame({
+new Lifegame({
   table: table,
   tickBtn: tickBtn,
 });
